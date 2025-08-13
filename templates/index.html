@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stock Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Price Predictor</h1>
+
+        <form method="POST">
+            <label for="ticker">Ticker Symbol:</label>
+            <input type="text" id="ticker" name="ticker" required value="{{ ticker or '' }}" placeholder="e.g. AAPL" />
+
+            <label for="model">Select Model:</label>
+            <select id="model" name="model">
+                <option value="ridge" {% if model_selected=='ridge' %}selected{% endif %}>Ridge Regression</option>
+                <option value="random_forest" {% if model_selected=='random_forest' %}selected{% endif %}>Random Forest</option>
+            </select>
+
+            <label for="period">Select Data Period:</label>
+            <select id="period" name="period">
+                <option value="3mo" {% if period_selected=='3mo' %}selected{% endif %}>Last 3 Months</option>
+                <option value="6mo" {% if period_selected=='6mo' or not period_selected %}selected{% endif %}>Last 6 Months</option>
+                <option value="1y" {% if period_selected=='1y' %}selected{% endif %}>Last 1 Year</option>
+                <option value="2y" {% if period_selected=='2y' %}selected{% endif %}>Last 2 Years</option>
+            </select>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if error %}
+            <p class="error">Error: {{ error }}</p>
+        {% endif %}
+
+        {% if pred_price %}
+            <div class="results">
+                <h2>Results for {{ ticker }}</h2>
+                <p><strong>Last Close Price:</strong> ${{ last_close }}</p>
+                <p><strong>Predicted Next Day Price:</strong> ${{ pred_price }}</p>
+                <p><strong>Predicted Return:</strong> {{ pred_return }}%</p>
+                <p><strong>Model MSE:</strong> {{ mse }}</p>
+                <p><strong>Model R²:</strong> {{ r2 }}</p>
+                <p><strong>Trade Signal:</strong> <span class="signal">{{ trade_signal }}</span></p>
+                <img src="{{ url_for('static', filename='plots/' + ticker + '_prediction.png') }}" alt="Prediction Plot" />
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
