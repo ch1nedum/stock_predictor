@@ -8,7 +8,7 @@ __pycache__/
 *.pyo
 *.so
 
-Virtual environment
+#Virtual environment
 venv/
 .env/
 ENV/
@@ -52,7 +52,7 @@ static/*.jpeg
 #Temporary files
 tmp/
 temp/
-=======
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -132,6 +132,7 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+.ipynb_checkpoints/
 
 # IPython
 profile_default/
@@ -198,6 +199,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.venv/
 
 # Spyder project settings
 .spyderproject
