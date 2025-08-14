@@ -1,0 +1,53 @@
+#Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pkl
+*.pyo
+*.so
+
+Virtual environment
+venv/
+.env/
+ENV/
+.venv/
+
+#Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+#Flask
+instance/
+*.db
+*.sqlite3
+
+#Logs
+*.log
+
+#Mac OS
+.DS_Store
+
+#Environment Variables
+.env
+
+#Model files
+*.sav
+*.h5
+*.joblib
+
+#Plots/Generated images
+static/*.png
+static/*.jpg
+static/*.jpeg
+
+#Cache
+*.cache
+*.gz
+
+#PyCharm/VSCode
+.vscode/
+.idea/
+
+#Temporary files
+tmp/
+temp/

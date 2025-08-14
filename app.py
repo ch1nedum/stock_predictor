@@ -16,7 +16,7 @@ def index():
         try:
             df = fetch_data(ticker, period=period)
 
-            # ✅ Extra safety check
+            #Extra safety check
             if df.empty:
                 raise ValueError(f"No data found for ticker {ticker}.")
 
